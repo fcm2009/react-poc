@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/webpack/bin/webpack.js --devtool source-map",
-    "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --devtool source-map --content-base dist --host 0.0.0.0 --public localhost:8080 --watch-poll"
+    "build": "node node_modules/webpack/bin/webpack.js --devtool source-map",
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --devtool source-map --content-base dist --host 0.0.0.0 --public localhost:8080 --watch-poll",
+    "flow": "node node_modules/flow-bin/cli.js"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +22,9 @@
     "babel-loader": "^7.1.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
+    "flow-bin": "^0.52.0",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"
   }
