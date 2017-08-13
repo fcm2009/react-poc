@@ -4,7 +4,12 @@ import React from 'react'
 export default ({ userProfile, updateProfile, updateName, updateAge }) => {
     return (
         <div>
-            <input type='text' readOnly placeholder value={ userProfile.id } />
+            <input 
+                type='text' 
+                readOnly 
+                placeholder 
+                //value={ userProfile.id }
+            />
             <input 
                 type='text' 
                 placeholder='User Name' 

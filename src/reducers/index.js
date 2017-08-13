@@ -1,4 +1,4 @@
-import { Map, fromJS, toJS } from 'immutable'
+import { fromJS } from 'immutable'
 
 import { 
     REQUEST_USER,
@@ -8,20 +8,21 @@ import {
 } from '../actions'
 
 const initalState = fromJS({
-    userProfile: { id: '', name: '', age: ''}
+    userProfile: { id: '0', name: '', age: ''}
 })
+
 
 export default (state = initalState, action) => {
     switch (action.type) {
         case REQUEST_USER:
-            return state
+            console.log(state); return state
         case RECEIVE_USER:
-            return state.set('userProfile', action.userProfile)
+            console.log(state.toJS(), action); return state.set('userProfile', action.userProfile)
         case UPDATE_NAME:
-            return state.setIn(['userProfile', 'name'], 'bbb')
+            console.log(state); return state.setIn(['userProfile', 'name'], action.name)
         case UPDATE_AGE:
-            return state.setIn(['userProfile', 'age'], 'bbb')
+            console.log(state); return state.setIn(['userProfile', 'age'], action.age)
         default:
-            return state
+            console.log(state); return state
     }
 }

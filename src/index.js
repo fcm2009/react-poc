@@ -29,5 +29,3 @@ ReactDOM.render(
     <App />,
     document.getElementById('root')
 )
-import { fetchUser } from './actions'
-store.dispatch(fetchUser(0))
