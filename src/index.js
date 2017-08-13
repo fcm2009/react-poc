@@ -1,15 +1,9 @@
 // @flow
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-
-const HelloWorld = props => {
-    return (
-        <div>Hello World</div>
-    )
-}
+import Profile from './components/profile.jsx'
 
 ReactDOM.render(
-    <HelloWorld />,
+    <Profile />,
     document.getElementById('root')
 )
