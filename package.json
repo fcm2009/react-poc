@@ -25,6 +25,7 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "flow-bin": "^0.52.0",
+    "redux-devtools": "^3.4.0",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"
   }
