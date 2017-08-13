@@ -1,9 +1,10 @@
 // @flow
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Profile from './components/profile.jsx'
+import UserProfile from './components/profile.jsx'
+import { connect } from 'react-redux'
 
 ReactDOM.render(
-    <Profile />,
+    <UserProfile />,
     document.getElementById('root')
 )

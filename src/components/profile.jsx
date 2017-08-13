@@ -1,22 +1,24 @@
 import React from 'react'
 import User  from './user.jsx'
+import store from '../store.js'
+import { getUserProfile } from '../services/user-service'
+import {getUserProfileAction} from '../actions/user-actions.js'
 
-export default class Profile extends React.Component {
+export default class UserProfile extends React.Component {
     constructor() {
         super(); 
-        this.state = {user: {name: 'Ahmed', age: 12, id:1}};
+        this.state = {user: {}};
     }
 
     componentDidMount() {
-        fetch(`http://localhost:3000/user/0`)
-        .then(result=>result.json())
-        .then(items=>this.setState({user: items})); 
+        getUserProfile()
+        .then(response => store.dispatch(getUserProfileAction(response))); 
     }
     render() {
         return (
             <div>
                 <h2>Profile</h2>
-                <User user={this.state.user}/>
+                <User user={this.props.user}/>
             </div>
         )
     }
