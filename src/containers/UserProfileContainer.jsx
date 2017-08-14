@@ -5,7 +5,9 @@ import UserProfile from '../components/UserProfile.jsx'
 
 const mapStateToProps = state => {
     return {
-        userProfile: state.get('userProfile')
+        id: state.getIn(['userProfile', 'id']),
+        name: state.getIn(['userProfile', 'name']),
+        age: state.getIn(['userProfile', 'age'])
     }
 }
 

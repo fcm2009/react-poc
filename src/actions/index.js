@@ -35,7 +35,6 @@ export const updateProfile = () => (dispatch, getState) => {
 }
 
 
-export const REQUEST_USER = 'REQUEST_USER'
 export const RECEIVE_USER = 'RECEIVE_USER'
-export const UPDATE_NAME ='UPDATE_NAME'
-export const UPDATE_AGE ='UPDATE_AGE'
+export const UPDATE_NAME = 'UPDATE_NAME'
+export const UPDATE_AGE = 'UPDATE_AGE'
