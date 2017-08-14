@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import rootReducer from './reducers'
 import thunk from 'redux-thunk'
 import UserProfileContainer from './containers/UserProfileContainer.jsx'
+import { fetchUser } from './actions'
 
 
 const store = createStore(
@@ -15,6 +16,8 @@ const store = createStore(
         window.devToolsExtension ? window.devToolsExtension() : f => f
     )
 )
+
+store.dispatch(fetchUser())
 
 const App = props => {
     return (
