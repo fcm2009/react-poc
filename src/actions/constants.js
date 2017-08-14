@@ -1,1 +1,3 @@
 export const GET_USER_PROFILE = 'GET_USER_PROFILE'; 
+export const UPDATE_USER_NAME = 'UPDATE_USER_NAME'; 
+export const UPDATE_USER_AGE = 'UPDATE_USER_AGE'; 
