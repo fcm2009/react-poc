@@ -7,7 +7,7 @@ export default ({ id, name, age, history, match }) => {
             <div>Id: { id }</div>
             <div>Name: { name }</div>
             <div>Age: { age }</div>
-            <button onClick={ () => history.push(`${match.url}/profile/edit`) }>Update Profile</button>
+            <button onClick={ () => history.push(`/profile/edit`) }>Update Profile</button>
         </div>
     )
 }
