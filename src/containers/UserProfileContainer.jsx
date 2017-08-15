@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { updateProfile, updateName, updateAge } from '../actions'
 import UserProfile from '../components/UserProfile.jsx'
-
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = state => {
     return {
@@ -20,4 +20,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserProfile))
