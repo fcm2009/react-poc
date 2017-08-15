@@ -7,6 +7,7 @@ import rootReducer from './reducers'
 import thunk from 'redux-thunk'
 import UserProfileContainer from './containers/UserProfileContainer.jsx'
 import { fetchUser } from './actions'
+import { BrowserRouter, Route, HashRouter  } from 'react-router-dom'
 
 
 const store = createStore(
@@ -22,7 +23,12 @@ store.dispatch(fetchUser())
 const App = props => {
     return (
         <Provider store={ store }>
-            <UserProfileContainer />
+            <BrowserRouter>
+                <div>
+                    <Route exact path='/' component={ () => <div>Hello World</div> } />
+                    <Route path='/a' component={ UserProfileContainer } />
+                </div>
+            </BrowserRouter>
         </Provider>
     )
 }

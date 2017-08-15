@@ -1,13 +1,23 @@
+import React from 'react'
 import { connect } from 'react-redux'
 import { updateProfile, updateName, updateAge } from '../actions'
-import UserProfile from '../components/UserProfile.jsx'
+import UserProfileViewer from '../components/UserProfileViewer.jsx'
+import UserProfileEditor from '../components/UserProfileEditor.jsx'
+import { Route } from 'react-router-dom'
 
+
+const userProfileContainer = ({ userProfile }) => {
+    return (
+        <div>
+            <Route path='/view' userProfile={ userProfile } component={ UserProfileViewer } />
+            <Route path='/edit' userProfile={ userProfile } component={ UserProfileEditor } />
+        </div>
+    )
+}
 
 const mapStateToProps = state => {
     return {
-        id: state.getIn(['userProfile', 'id']),
-        name: state.getIn(['userProfile', 'name']),
-        age: state.getIn(['userProfile', 'age'])
+        userProfile: state.get('userProfile')
     }
 }
 
@@ -20,4 +30,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(userProfileContainer)
