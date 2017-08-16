@@ -1,13 +1,14 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import UserProfileContainer from './containers/UserProfileContainer.jsx'
+import UserProfileView from './components/UserProfileView.jsx'
 
 
-const MyRoutes = () => (
-    <Switch>
-        <Route exact path='/' component={UserProfileContainer}/>
-        <Route path='/profile' component={() => <h2>Abdullah Profile</h2>}/>
-    </Switch>
+const MainRoutes = () => (
+    <switch>
+        <Route exact path='/' component={() => <Redirect to="/profile"/>}/>
+        <Route path='/profile' component={UserProfileContainer}/>
+    </switch>
 )
 
-export default MyRoutes
+export default MainRoutes
