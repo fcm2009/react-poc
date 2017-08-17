@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateProfile, updateName, updateAge } from '../actions'
+import { updateProfile, updateName, updateAge, logout } from '../actions'
 import UserProfileViewer from '../components/UserProfileViewer.jsx'
 import UserProfileEditor from '../components/UserProfileEditor.jsx'
 import { Route, Link, Switch } from 'react-router-dom'
@@ -9,8 +9,8 @@ import { Route, Link, Switch } from 'react-router-dom'
 const userProfileContainer = ({ userProfile, callbacks, match }) => {
     return (
         <Switch>
-            <Route path={ `${match.url}/view` } render={ props => <UserProfileViewer { ...userProfile } {...props}   /> } />
-            <Route path={ `${match.url}/edit` } render={ props => <UserProfileEditor { ...userProfile } {...callbacks} /> } />
+            <Route path={ `${match.url}/view` } render={ props => <UserProfileViewer { ...userProfile } { ...props } { ...callbacks }   /> } />
+            <Route path={ `${match.url}/edit` } render={ props => <UserProfileEditor { ...userProfile } { ...callbacks } /> } />
         </Switch>
     )
 }
@@ -26,7 +26,8 @@ const mapDispatchToProps = dispatch => {
         callbacks: {
             updateProfile: () => dispatch(updateProfile()),
             updateName: name => dispatch(updateName(name)),
-            updateAge: age => dispatch(updateAge(age))
+            updateAge: age => dispatch(updateAge(age)),
+            logout: () => dispatch(logout())
         }
     }
 }

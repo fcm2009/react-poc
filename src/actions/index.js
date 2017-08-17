@@ -22,6 +22,19 @@ export const updateAge = age => {
     }
 }
 
+export const loggedIn = token => {
+    return {
+        type: LOGGEDIN,
+        token
+    }
+}
+
+export const logout = () => {
+    return {
+        type: LOGOUT
+    }
+}
+
 export const fetchUser = () => dispatch => {
     axios.get(`http://localhost:3000/user/0`)
         .then(response => response.data)
@@ -34,7 +47,15 @@ export const updateProfile = () => (dispatch, getState) => {
         .then(userProfile => dispatch(receiveUser(userProfile)))
 }
 
+export const login = (username, password) => dispatch => {
+    axios.post('http://localhost:3000/login', { username, password })
+        .then(response => response.data)
+        .then(token => dispatch(loggedIn(token)))
+}
+
 
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const UPDATE_NAME = 'UPDATE_NAME'
 export const UPDATE_AGE = 'UPDATE_AGE'
+export const LOGGEDIN = 'LOGGEDIN'
+export const LOGOUT = 'LOGOUT'

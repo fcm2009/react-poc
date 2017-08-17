@@ -5,11 +5,8 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from './reducers'
 import thunk from 'redux-thunk'
-import UserProfileContainer from './containers/UserProfileContainer.jsx'
-import Home from './components/Home.jsx'
-import Navigation from './components/Navigation.jsx'
 import { fetchUser } from './actions'
-import { BrowserRouter, Route, HashRouter  } from 'react-router-dom'
+import App from './components/App.jsx'
 
 
 const store = createStore(
@@ -22,21 +19,15 @@ const store = createStore(
 
 store.dispatch(fetchUser())
 
-const App = props => {
+const ReduxApp = props => {
     return (
         <Provider store={ store }>
-                <HashRouter>
-                    <div>
-                        <Navigation />
-                        <Route exact path='/' component={ Home } />
-                        <Route path='/profile' component={ UserProfileContainer } />
-                    </div>
-                </HashRouter>
+            <App />
         </Provider>
     )
 }
 
 ReactDOM.render(
-    <App />,
+    <ReduxApp />,
     document.getElementById('root')
 )
