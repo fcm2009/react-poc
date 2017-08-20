@@ -33,9 +33,9 @@ export default (state = initalState, action) => {
         case LOGOUT:
             return state.set('token', '')
         case TOGGLE_COUNTER:
-            return state.setIn(['counter', 'started'], !state.getIn(['counter, started'])) 
+            return state.updateIn(['counter', 'started'], started => !started) 
         case TICK:
-            return state.setIn(['counter', 'remainingTime'], state.getIn(['counter', 'remainingTime']) - 1)
+            return state.updateIn(['counter', 'remainingTime'], remainingTime => remainingTime - 1)
         default:
             return state
     }
