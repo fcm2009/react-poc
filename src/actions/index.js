@@ -36,13 +36,13 @@ export const logout = () => {
 }
 
 export const fetchUser = () => (dispatch, getState) => {
-    axios.get(`http://localhost:3000/user/0`, { headers: { Authorization: `Bearer ${getState().get('token').token}` }})
+    axios.get(`http://localhost:3000/user/0`, { headers: { Authorization: `Bearer ${getState().get('token')}` }})
         .then(response => response.data)
         .then(userProfile => dispatch(receiveUser(userProfile)))
 }
 
 export const updateProfile = () => (dispatch, getState) => {
-    axios.post('http://localhost:3000/user/0', getState().get('userProfile'), { headers: { Authorization: `Bearer ${getState().get('token').token}` }})
+    axios.post('http://localhost:3000/user/0', getState().get('userProfile'), { headers: { Authorization: `Bearer ${getState().get('token')}` }})
         .then(response => response.data)
         .then(userProfile => dispatch(receiveUser(userProfile)))
 }
@@ -50,7 +50,7 @@ export const updateProfile = () => (dispatch, getState) => {
 export const login = (username, password) => dispatch => {
     axios.post('http://localhost:3000/login', { username, password })
         .then(response => response.data)
-        .then(token => dispatch(loggedIn(token)))
+        .then(response => dispatch(loggedIn(response.token)))
 }
 
 

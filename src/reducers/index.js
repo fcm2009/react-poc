@@ -19,13 +19,13 @@ export default (state = initalState, action) => {
         case RECEIVE_USER:
             return state.setIn(['userProfile'], fromJS(action.userProfile))
         case UPDATE_NAME:
-            return state.setIn(['userProfile', 'name'], action.name)
+            return state.setIn(['userProfile', 'name'], fromJS(action.name))
         case UPDATE_AGE:
-            return state.setIn(['userProfile', 'age'], action.age)
+            return state.setIn(['userProfile', 'age'], fromJS(action.age))
         case LOGGEDIN:
-            return state.setIn(['token'], action.token)
+            return state.set('token', fromJS(action.token))
         case LOGOUT:
-            return state.setIn(['token'], '')
+            return state.set('token', fromJS(''))
         default:
             return state
     }
