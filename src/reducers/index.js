@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable'
-
 import { 
     RECEIVE_USER,
     UPDATE_NAME,
@@ -9,6 +8,7 @@ import {
     TICK,
     TOGGLE_COUNTER
 } from '../actions'
+
 
 const initalState = fromJS({
     userProfile: { id: 0, name: '', age: ''},

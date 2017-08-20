@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-export const receiveUser = (userProfile) => {
+export const receiveUser = userProfile => {
     return {
         type: RECEIVE_USER,
         userProfile
