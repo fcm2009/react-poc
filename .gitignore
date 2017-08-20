@@ -4,3 +4,4 @@ dist/bundle.js
 dist/bundle.js.map
 yarn-error.log
 .vscode
+test.js
