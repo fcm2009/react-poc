@@ -1,14 +1,46 @@
 import React from 'react'
-import Counter from '../containers/Counter.jsx'
+import { connect } from 'react-redux'
+import { toggleCounter } from '../actions'
 
-export default ({ id, name, age, updateProfile, updateName, updateAge }) => {
-    return (
-        <div>
-            <Counter />
-            <input type='text' readOnly placeholder value={ id }/>
-            <input type='text' placeholder='User Name' value={ name } onChange={ e => updateName(e.target.value) } />
-            <input type='text' placeholder='Age' value={ age } onChange={ e => updateAge(e.target.value) } />
-            <button onClick={ updateProfile }>Save</button>
-        </div>
-    )
+class UserProfileEditor extends React.Component {
+    
+    componentDidMount() {
+
+    }
+
+    render() {
+        return (
+            <div>
+                <input type='text' readOnly placeholder value={ this.props.userProfile.id }/>
+                <input 
+                    type='text' 
+                    placeholder='User Name' 
+                    value={ this.props.userProfile.name } 
+                    onChange={ e => this.props.callbacksupdateName(e.target.value) } 
+                />
+                <input 
+                    type='text' 
+                    placeholder='Age' 
+                    value={ this.props.userProfile.age } 
+                    onChange={ e => this.props.callback.updateAge(e.target.value) } 
+                />
+                <button onClick={ updateProfile }>Save</button>
+            </div>
+        )
+    }
 }
+
+const mapStateToProps = state => {
+    return {
+        
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleCounter: dispatch(toggleCounter())
+    }
+} 
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfileEditor)
+

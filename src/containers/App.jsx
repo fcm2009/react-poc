@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, HashRouter  } from 'react-router-dom'
 import UserProfileContainer from './UserProfileContainer.jsx'
+import Counter from './Counter.jsx'
 import Login from './Login.jsx'
 import Home from '../components/Home.jsx'
 import Navigation from '../components/Navigation.jsx'
@@ -13,6 +14,7 @@ const App = props => {
         <HashRouter>
             <div>
                 <Navigation />
+                <Counter />
                 <Route exact path='/' component={ Home } />
                 <PrivateRoute path='/profile' token={ props.token } component={ UserProfileContainer } />
                 <Route path='/login' component={ Login } />

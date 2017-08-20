@@ -1,30 +1,49 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { tick } from '../actions'
 
-
-export default class Counter extends React.Component {
+class Counter extends React.Component {
     
     constructor() {
         super()
-        this.state = { remaningTime: 30, intervalId: null }
-        this.tick = this.tick.bind(this)
+        this.state = { intervalId: null }
     }
 
-    componentDidMount() {
-        const intervalId = setInterval(this.tick, 1000)
-        this.setState({ intervalId: intervalId })
+    componentWillUpdate(nextProps) {
+        if(nextProps.started) {
+            const intervalId = setInterval(this.props.tick, 1000)
+        }
+    }
+
+    componentWillReceiveProps() {
+        if(nextProps.started) {
+            this.setState({ intervalId: intervalId })
+        }
     }
 
     componentWillUnmount() {
         clearInterval(this.state.intervalId)
     }
 
-    tick() {
-        this.setState({ remaningTime: this.state.remaningTime - 1 })
-    }
-
     render() {
         return (
-            <div>Remaning Time: { this.state.remaningTime }</div>
+            <div>Remaning Time: { this.props.remainingTime }</div>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        remainingTime: state.getIn(['counter', 'remainingTime']),
+        started: state.getIn(['counter', 'started'])
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        tick: () => dispatch(tick())
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter)

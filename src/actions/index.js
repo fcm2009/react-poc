@@ -35,6 +35,18 @@ export const logout = () => {
     }
 }
 
+export const tick = () => {
+    return {
+        type: TICK
+    }
+}
+
+export const toggleCounter = () => {
+    return {
+        type: TOGGLE_COUNTER
+    }
+}
+
 export const fetchUser = () => (dispatch, getState) => {
     axios.get(`http://localhost:3000/user/0`, { headers: { Authorization: `Bearer ${getState().get('token')}` }})
         .then(response => response.data)
@@ -59,3 +71,5 @@ export const UPDATE_NAME = 'UPDATE_NAME'
 export const UPDATE_AGE = 'UPDATE_AGE'
 export const LOGGEDIN = 'LOGGEDIN'
 export const LOGOUT = 'LOGOUT'
+export const TICK = 'TICK'
+export const TOGGLE_COUNTER = 'TOGGLE_COUNTER'
