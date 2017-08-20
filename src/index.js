@@ -5,7 +5,6 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from './reducers'
 import thunk from 'redux-thunk'
-import { fetchUser } from './actions'
 import App from './components/App.jsx'
 
 
@@ -16,8 +15,6 @@ const store = createStore(
         window.devToolsExtension ? window.devToolsExtension() : f => f
     )
 )
-
-store.dispatch(fetchUser())
 
 const ReduxApp = props => {
     return (

@@ -1,18 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateProfile, updateName, updateAge, logout } from '../actions'
+import { updateProfile, updateName, updateAge, logout, fetchUser } from '../actions'
 import UserProfileViewer from '../components/UserProfileViewer.jsx'
 import UserProfileEditor from '../components/UserProfileEditor.jsx'
 import { Route, Link, Switch } from 'react-router-dom'
 
 
-const userProfileContainer = ({ userProfile, callbacks, match }) => {
-    return (
-        <Switch>
-            <Route path={ `${match.url}/view` } render={ props => <UserProfileViewer { ...userProfile } { ...props } { ...callbacks }   /> } />
-            <Route path={ `${match.url}/edit` } render={ props => <UserProfileEditor { ...userProfile } { ...callbacks } /> } />
-        </Switch>
-    )
+class userProfileContainer extends React.Component {
+
+    componentDidMount() {
+        this.props.callbacks.fetchUser()
+    }
+
+    render() {
+        return (
+            <Switch>
+                <Route 
+                    path={ `${this.props.match.url}/view` } 
+                    render={ routerProps => <UserProfileViewer { ...this.props.userProfile } { ...routerProps } { ...this.props.callbacks }   /> }
+                />
+                <Route 
+                    path={ `${this.props.match.url}/edit` } 
+                    render={ () => <UserProfileEditor { ...this.props.userProfile } { ...this.props.callbacks } /> } 
+                />
+            </Switch>
+        )
+    }
 }
 
 const mapStateToProps = state => {
@@ -27,7 +40,8 @@ const mapDispatchToProps = dispatch => {
             updateProfile: () => dispatch(updateProfile()),
             updateName: name => dispatch(updateName(name)),
             updateAge: age => dispatch(updateAge(age)),
-            logout: () => dispatch(logout())
+            logout: () => dispatch(logout()),
+            fetchUser: () => dispatch(fetchUser())
         }
     }
 }

@@ -17,7 +17,7 @@ const initalState = fromJS({
 export default (state = initalState, action) => {
     switch (action.type) {
         case RECEIVE_USER:
-            return fromJS({ userProfile: action.userProfile })
+            return state.setIn(['userProfile'], fromJS(action.userProfile))
         case UPDATE_NAME:
             return state.setIn(['userProfile', 'name'], action.name)
         case UPDATE_AGE:
