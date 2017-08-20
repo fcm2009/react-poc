@@ -5,26 +5,26 @@ import { toggleCounter } from '../actions'
 class UserProfileEditor extends React.Component {
     
     componentDidMount() {
-
+        this.props.toggleCounter()
     }
 
     render() {
         return (
             <div>
-                <input type='text' readOnly placeholder value={ this.props.userProfile.id }/>
+                <input type='text' readOnly placeholder value={ this.props.id }/>
                 <input 
                     type='text' 
                     placeholder='User Name' 
-                    value={ this.props.userProfile.name } 
-                    onChange={ e => this.props.callbacksupdateName(e.target.value) } 
+                    value={ this.props.name } 
+                    onChange={ e => this.props.updateName(e.target.value) } 
                 />
                 <input 
                     type='text' 
                     placeholder='Age' 
-                    value={ this.props.userProfile.age } 
-                    onChange={ e => this.props.callback.updateAge(e.target.value) } 
+                    value={ this.props.age } 
+                    onChange={ e => this.props.updateAge(e.target.value) } 
                 />
-                <button onClick={ updateProfile }>Save</button>
+                <button onClick={ this.props.updateProfile }>Save</button>
             </div>
         )
     }
@@ -38,7 +38,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleCounter: dispatch(toggleCounter())
+        toggleCounter: () => dispatch(toggleCounter())
     }
 } 
 
