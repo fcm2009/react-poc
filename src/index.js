@@ -18,12 +18,10 @@ const store = createStore(
     )
 )
 
-store.dispatch(fetchUser())
-
 const App = props => {
     return (
         <Provider store={ store }>
-            <MainRoutes />
+            <MainRoutes/>
         </Provider>
     )
 }
