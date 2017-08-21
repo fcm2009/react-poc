@@ -13,7 +13,7 @@ export default (state = initalState, action) => {
         case START_COUNTER:
             return state.set('started', true)
         case STOP_COUNTER:
-            return state.set('started', false) 
+            return state.set('started', false)
         case TICK:
             return state.update('remainingTime', remainingTime => remainingTime - 1)
         default:

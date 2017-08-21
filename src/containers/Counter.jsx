@@ -10,7 +10,7 @@ class Counter extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.started && !this.props.started) {
+        if(nextProps.started && !this.props.started && this.props.remainingTime != 0) {
             const intervalId = setInterval(this.props.tick, 1000)
             this.setState({ intervalId: intervalId })
         } else if(nextProps.remainingTime == 0 && this.props.remainingTime != 0) {

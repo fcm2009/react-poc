@@ -1,11 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { startCounter } from '../actions'
+import { startCounter, stopCounter } from '../actions'
 
 class UserProfileEditor extends React.Component {
     
     componentDidMount() {
         this.props.startCounter()
+    }
+
+    componentWillUnmount() {
+        this.props.stopCounter()
     }
 
     render() {
@@ -38,7 +42,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        startCounter: () => dispatch(startCounter())
+        startCounter: () => dispatch(startCounter()),
+        stopCounter: () => dispatch(stopCounter())
     }
 } 
 

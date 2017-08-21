@@ -15,9 +15,20 @@ class userProfileContainer extends React.Component {
     render() {
         return (
             <Switch>
+                <Route
+                    exact path={ this.props.match.url }
+                    render={ routerProps => {
+                        return (
+                            <div>
+                                <UserProfileViewer { ...this.props.userProfile } { ...routerProps } { ...this.props.callbacks } />
+                                <UserProfileEditor { ...this.props.userProfile } { ...this.props.callbacks } />
+                            </div>
+                        )}  
+                    }
+                />
                 <Route 
                     path={ `${this.props.match.url}/view` } 
-                    render={ routerProps => <UserProfileViewer { ...this.props.userProfile } { ...routerProps } { ...this.props.callbacks }   /> }
+                    render={ routerProps => <UserProfileViewer { ...this.props.userProfile } { ...routerProps } { ...this.props.callbacks } /> }
                 />
                 <Route 
                     path={ `${this.props.match.url}/edit` } 
