@@ -7,12 +7,14 @@ import Home from '../components/Home.jsx'
 import Navigation from '../components/Navigation.jsx'
 import PrivateRoute from '../utils/PrivateRoute.jsx'
 import { connect } from 'react-redux'
+import AppBar from 'material-ui/AppBar'
 
 
 const App = props => {
     return (
         <HashRouter>
             <div>
+                <AppBar />
                 <Navigation />
                 <Counter />
                 <Route exact path='/' component={ Home } />

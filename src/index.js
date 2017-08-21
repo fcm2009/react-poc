@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import rootReducer from './reducers'
 import thunk from 'redux-thunk'
 import App from './containers/App.jsx'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 
 const store = createStore(
@@ -18,9 +19,11 @@ const store = createStore(
 
 const ReduxApp = props => {
     return (
-        <Provider store={ store }>
-            <App />
-        </Provider>
+        <MuiThemeProvider>
+            <Provider store={ store }>
+                <App />
+            </Provider>
+        </MuiThemeProvider>
     )
 }
 
