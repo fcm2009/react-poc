@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "antd": "^2.12.7",
     "axios": "^0.16.2",
     "immutable": "^3.8.1",
     "react": "^15.6.1",
