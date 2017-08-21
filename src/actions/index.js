@@ -41,9 +41,27 @@ export const tick = () => {
     }
 }
 
-export const toggleCounter = () => {
+export const startCounter = () => {
     return {
-        type: TOGGLE_COUNTER
+        type: START_COUNTER
+    }
+}
+
+export const stopCounter = () => {
+    return {
+        type: STOP_COUNTER
+    }
+}
+
+export const activateUserProfileEditor = () => {
+    return {
+        type: ACTIVATE_USER_PROFILE_EDITOR
+    }
+}
+
+export const deactivateUserProfileEditor = () => {
+    return {
+        type: DEACTIVATE_USER_PROFILE_EDITOR
     }
 }
 
@@ -72,4 +90,7 @@ export const UPDATE_AGE = 'UPDATE_AGE'
 export const LOGGEDIN = 'LOGGEDIN'
 export const LOGOUT = 'LOGOUT'
 export const TICK = 'TICK'
-export const TOGGLE_COUNTER = 'TOGGLE_COUNTER'
+export const START_COUNTER = 'START_COUNTER'
+export const STOP_COUNTER = 'STOP_COUNTER'
+export const ACTIVATE_USER_PROFILE_EDITOR = 'ACTIVATE_USER_PROFILE_EDITOR'
+export const DEACTIVATE_USER_PROFILE_EDITOR = 'DEACTIVATE_USER_PROFILE_EDITOR'

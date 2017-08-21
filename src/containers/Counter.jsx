@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { tick } from '../actions'
+import { tick, deactivateUserProfileEditor, stopCounter } from '../actions'
 
 class Counter extends React.Component {
     
@@ -13,6 +13,11 @@ class Counter extends React.Component {
         if(nextProps.started && !this.props.started) {
             const intervalId = setInterval(this.props.tick, 1000)
             this.setState({ intervalId: intervalId })
+        } else if(nextProps.remainingTime == 0 && this.props.remainingTime != 0) {
+            this.props.stopCounter()
+            this.props.deactivateUserProfileEditor()
+        } else if(!nextProps.started) {
+            clearInterval(this.state.intervalId)
         }
     }
 
@@ -36,7 +41,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        tick: () => dispatch(tick())
+        tick: () => dispatch(tick()),
+        stopCounter: () => dispatch(stopCounter()),
+        deactivateUserProfileEditor: () => dispatch(deactivateUserProfileEditor())
     }
 }
 

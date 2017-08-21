@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { toggleCounter } from '../actions'
+import { startCounter } from '../actions'
 
 class UserProfileEditor extends React.Component {
     
     componentDidMount() {
-        this.props.toggleCounter()
+        this.props.startCounter()
     }
 
     render() {
@@ -24,7 +24,7 @@ class UserProfileEditor extends React.Component {
                     value={ this.props.age } 
                     onChange={ e => this.props.updateAge(e.target.value) } 
                 />
-                <button onClick={ this.props.updateProfile }>Save</button>
+                <button onClick={ this.props.updateProfile } disabled={ !this.props.editable }>Save</button>
             </div>
         )
     }
@@ -32,13 +32,13 @@ class UserProfileEditor extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        
+        editable: state.UserProfileEditor.get('editable')
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleCounter: () => dispatch(toggleCounter())
+        startCounter: () => dispatch(startCounter())
     }
 } 
 
