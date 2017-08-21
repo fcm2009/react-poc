@@ -29,8 +29,8 @@ class Counter extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        remainingTime: state.getIn(['counter', 'remainingTime']),
-        started: state.getIn(['counter', 'started'])
+        remainingTime: state.counter.get('remainingTime'),
+        started: state.counter.get('started')
     }
 }
 

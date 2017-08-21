@@ -25,7 +25,7 @@ const App = props => {
 
 const mapStateToProps = state => {
     return {
-        token: state.getIn(['token'])
+        token: state.token
     }
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { updateProfile, updateName, updateAge, logout, fetchUser } from '../actions'
 import UserProfileViewer from '../components/UserProfileViewer.jsx'
-import UserProfileEditor from '../components/UserProfileEditor.jsx'
+import UserProfileEditor from '../containers/UserProfileEditor.jsx'
 import { Route, Link, Switch } from 'react-router-dom'
 
 
@@ -30,7 +30,7 @@ class userProfileContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        userProfile: state.get('userProfile').toJS()
+        userProfile: state.userProfile.toJS()
     }
 }
 

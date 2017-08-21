@@ -48,13 +48,13 @@ export const toggleCounter = () => {
 }
 
 export const fetchUser = () => (dispatch, getState) => {
-    axios.get(`http://localhost:3000/user/0`, { headers: { Authorization: `Bearer ${getState().get('token')}` }})
+    axios.get(`http://localhost:3000/user/0`, { headers: { Authorization: `Bearer ${getState().token}` }})
         .then(response => response.data)
         .then(userProfile => dispatch(receiveUser(userProfile)))
 }
 
 export const updateProfile = () => (dispatch, getState) => {
-    axios.post('http://localhost:3000/user/0', getState().get('userProfile'), { headers: { Authorization: `Bearer ${getState().get('token')}` }})
+    axios.post('http://localhost:3000/user/0', getState().userProfile.toJS(), { headers: { Authorization: `Bearer ${getState().token}` }})
         .then(response => response.data)
         .then(userProfile => dispatch(receiveUser(userProfile)))
 }
