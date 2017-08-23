@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { tick, deactivateUserProfileEditor, stopCounter } from '../actions'
+import { Snackbar } from 'react-toolbox'
+
 
 class Counter extends React.Component {
     
@@ -27,7 +29,9 @@ class Counter extends React.Component {
 
     render() {
         return (
-            <div>Remaning Time: { this.props.remainingTime }</div>
+            <Snackbar active={ this.props.remainingTime > 0 &&  this.props.started } >
+                You have 30 Seconds to update Your Profile. Remaning Time: { this.props.remainingTime }
+            </Snackbar>
         )
     }
 }
